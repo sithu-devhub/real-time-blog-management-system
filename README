@@ -1,68 +1,161 @@
+# Blog Management System
 
-### Blog Management System ###
-A simple, elegant, and modern Blog Posting Platform built with Node.js, Express.js, MongoDB, and Pug.
-It allows users to create, edit, search, and manage blog posts with authentication and admin control features.
+A simple, elegant, and modern **Blog Posting Platform** built with **Node.js, Express.js, MongoDB, and Pug**.
+The system allows users to create, edit, search, and manage blog posts with secure authentication and admin management features.
+
+---
+
+## Overview
+
+This application provides a complete blogging platform where users can:
+
+* Register and login securely
+* Create and manage blog posts
+* Search posts by title or tags
+* View posts created by other users
+* Access an admin panel for platform management
+
+The project focuses on **clean architecture, maintainability, and responsive design**.
+
+---
+
+## Features
+
+### User Features
+
+* User registration and login
+* Create blog posts
+* View blog posts from other users
+* Edit or delete your own blog posts
+* Search blog posts by **title** or **tags**
+
+### Admin Features
+
+* Admin dashboard
+* Manage blog posts
+* Manage users
+
+### System Features
+
+* Responsive design (mobile, tablet, desktop)
+* Modern UI using **Bootstrap 5**
+* Flash messages for user feedback
+* Secure authentication
+* CSRF protection
+* Clean and maintainable code structure
+* Reusable components
+
+---
+
+## Technology Stack
+**Backend**
+* Node.js
+* Express.js
+
+**Database**
+* MongoDB
+* Mongoose
+
+**Templating Engine**
+* Pug
+
+**Styling**
+* Bootstrap 5
+* Custom CSS
+
+**Authentication**
+* Passport.js (Local Strategy)
+
+**Validation**
+* Joi
+
+**Security**
+* CSRF Protection
+
+**Other Tools**
+* Method Override (PUT / DELETE support)
+
+---
+
+## Project Structure
+config/
+controllers/
+middleware/
+models/
+routes/
+utils/
+views/
+public/
+app.js
+db.js
+package.json
 
 
-# Functions
-User registration and login
-- Register and login as blog posting users
-- View blog posts posted by other users
-- Create, view, edit, delete your own blog posts
-- Search blog posts by title or tags
-- Admin panel to manage blog posts and users
+---
 
-# Features
-- Responsive design for mobile, tablet, and desktop
-- Modern UI with Bootstrap 5 styling
-- Flash messages for user feedback
-- Secure authentication and CSRF protection
-- Reusable components
-- Clean and maintainable code structure
+## Installation
+### 1. Clone the repository
+git clone https://github.com/sithu-devhub/blog-management-system.git
 
-# Technology stack
-- Backend: Node.js, Express.js
-- Database: MongoDB with Mongoose
-- Templating Engine: Pug
-- Styling: Bootstrap 5, Custom CSS
-- Authentication: Passport.js (Local Strategy)
-- Validation: Joi
-- Security: CSRF Protection
-- Other: Method-Override (for PUT and DELETE)
+### 2. Navigate to the project folder
+cd blog-management-system
 
+### 3. Install dependencies
+npm install
 
-# Author
-Name - Jayasinghege Don Madhusha Sithumini Jayasinghe
-Student ID - 22466972
-
-Command to run;
+### 4. Run the application
 npm start
 
-Main link;
+---
+
+## Application URLs
+Main application
 http://localhost:3000/
 
-404 test
+Test routes
+404 error test
 http://localhost:3000/test
 
-500 test
+500 error test
 http://localhost:3000/error-test
 
-Test User Logins
-Normal User
+---
+
+## Test User Accounts
+### Normal Users
 Email - testuser@gmail.com
 Password - 111111
 
-Email - sithuminiadl@gmail.com 
+Email - sithuminiadl@gmail.com
 Password - 111111
 
-Admin User
+---
+
+### Admin User
 Email - adminuser@gmail.com
 Password - 111111
 
-Mobile Device Access;
-Home - http://192.168.0.120:3000
-University - 
+---
+
+## Mobile Device Access
+Application can be accessed from a mobile device connected to the same network.
+Example:
+http://192.168.0.120:3000
+
+---
+
+## API Documentation
+Postman Collection
+
+https://sithu-4044546.postman.co/workspace/9b18f05d-6b29-4d6f-834d-b18aca4e2194/documentation/44466631-3e1b06b1-ceff-4bdc-9551-2044954e6348
+
+---
+
+## Author
+Sithumini Jayasinghe
 
 
-Postman Colleciton
-https://sithu-4044546.postman.co/workspace/9b18f05d-6b29-4d6f-834d-b18aca4e2194/documentation/44466631-3e1b06b1-ceff-4bdc-9551-2044954e6348 
+---
+
+## License
+This project is developed for academic and educational purposes.
