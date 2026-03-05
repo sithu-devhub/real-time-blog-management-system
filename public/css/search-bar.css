@@ -1,0 +1,45 @@
+  /* --------------------------
+  Rounded Search Bar
+----------------------------- */
+.modern-search .input-group {
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.modern-search .form-control {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.modern-search .input-group-text {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.search-btn {
+    background-color: #f3e9fb !important;  
+    border: 2px solid #ffffff !important;   
+    color: #959198 !important;
+    border-radius: 50px !important;
+    font-weight: 300;
+    transition: all 0.2s ease;
+  }
+  
+.search-btn:hover {
+    background-color: #ead9f8 !important;  
+    border-color: #ffffff !important;
+    color: rgb(125, 102, 147) !important;
+    box-shadow: 0 4px 12px rgba(194, 134, 243, 0.3);
+    cursor: pointer;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+    }
+    
+
+
+
+

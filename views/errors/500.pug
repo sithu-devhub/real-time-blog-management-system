@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  .container.d-flex.justify-content-center.align-items-center(style="min-height: 80vh; padding-top: 80px;")
+    .text-center
+      img(src="/img/500.jpg", alt="Server Error", class="img-fluid mb-4 mx-auto d-block", style="width: 400px; height: auto;")
+      h3.text-dangerdark.mb-2 Oops! Something went wrong.
+      p.text-muted.mb-4 The server encountered an internal error and could not complete your request.
+      a.btn.btn-purple.rounded-pill.px-4.py-2(href="/") GO HOME

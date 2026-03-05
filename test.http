@@ -1,0 +1,131 @@
+### Test Landing Page
+GET http://localhost:3000/
+
+### Test Login Page
+GET http://localhost:3000/login
+
+### Test Register Page
+GET http://localhost:3000/register
+
+
+### Test Register a user (POST /register)
+POST http://localhost:3000/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Sithu",
+  "email": "test00001@gmail.com",
+  "password": "111111"
+}
+
+
+### Test Login as user (POST /login)
+POST http://localhost:3000/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "sithuminiadl@gmail.com",
+  "password": "111111"
+}
+
+
+### Test Get All Blog Posts (GET /posts as JSON)
+GET http://localhost:3000/posts
+Accept: application/json
+
+
+### Test Get My Posts (GET /posts/myposts as JSON)
+GET http://localhost:3000/posts/myposts
+Accept: application/json
+# Cookie: connect.sid=s%3AVB70AoT5aSLkXovoYalDrNZsusib91Qt.b7N3cWvgFo0ACwG08vkmakbA9SQrN2j%2FbZiJvvuHHbQ
+
+
+### Test Create Post (POST /posts)
+POST http://localhost:3000/posts
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "My First API Post",
+  "content": "This post was created using test.http as a JSON request.",
+  "tags": "api, test, json"
+}
+
+
+### Test View Single Post (GET /posts/:id as JSON)
+GET http://localhost:3000/posts/680df46de1046caf55e31755
+Accept: application/json
+
+
+### Show Edit Form for Post (GET /posts/:id/edit)
+GET http://localhost:3000/posts/680de001adcfee21dad290a7/edit
+Accept: application/json
+
+
+### Test Update Post (PUT /posts/:id)
+PUT http://localhost:3000/posts/680df46de1046caf55e31755
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Updated Title via API-Edit",
+  "content": "Updated content using test.http for PUT-Edit",
+  "tags": "updated, api, Edit"
+}
+
+
+### Test Delete Post (DELETE /posts/:id)
+DELETE http://localhost:3000/posts/680df46de1046caf55e31755
+Accept: application/json
+
+
+### Test Search by Title (Available) via '/posts' 
+GET http://localhost:3000/posts?search=app
+Accept: application/json
+
+### Test Search by Tags (Available) via '/posts' 
+GET http://localhost:3000/posts?search=tul
+Accept: application/json
+
+### Test Search by Title (Unavailable) via '/posts' 
+GET http://localhost:3000/posts?search=empty
+Accept: application/json
+
+### Test Search by Tags (Unavailable) via '/posts' 
+GET http://localhost:3000/posts?search=cherry
+Accept: application/json
+
+### Test Search by Tags (Unavailable) via '/posts/myposts' 
+GET http://localhost:3000/posts/myposts?search=health
+Accept: application/json
+
+
+#############################################################
+### Admin login
+POST http://localhost:3000/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "adminuser@gmail.com",
+  "password": "111111"
+}
+
+### Show Admin Dashboard
+GET http://localhost:3000/admin
+Accept: application/json
+
+### View All Users
+GET http://localhost:3000/admin/users
+Accept: application/json
+
+### View All Blog Posts
+GET http://localhost:3000/admin/posts
+Accept: application/json
+
+### Delete a Blog Post (Admin)
+DELETE http://localhost:3000/admin/posts/680df66f5214639adc0b4e02
+Content-Type: application/json
+Accept: application/json

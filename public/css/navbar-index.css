@@ -1,0 +1,242 @@
+/* --------------------------
+   Transparent Navbar (Index)
+----------------------------- */
+.navbar-transparent {
+  background-color: transparent !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#indexNavbar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  position: relative;
+  backdrop-filter: none;
+}
+
+#indexNavbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 60px;
+  right: 60px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* --------------------------
+   Scrolled / Solid Navbar
+----------------------------- */
+.navbar-scrolled {
+  background-color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --------------------------
+   Navbar Links
+----------------------------- */
+.nav-link-custom {
+  font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-size: 20px;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-transparent .nav-link-custom {
+  color: white !important;
+}
+
+.navbar-transparent .nav-link-custom:hover {
+  color: #f0f0f0;
+}
+
+.navbar-scrolled .nav-link-custom,
+.bg-white .nav-link-custom {
+  color: #333 !important;
+}
+
+/* --------------------------
+   Active Link Highlighting
+----------------------------- */
+.nav-link-custom.active {
+  text-decoration: underline;
+}
+
+/* --------------------------
+   Navbar Toggler
+----------------------------- */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* --------------------------
+   Navigation Buttons
+----------------------------- */
+.btn-primary {
+  background-color: #3c64f4;
+  border-color: #3c64f4;
+}
+
+.btn-outline-purple {
+  background-color: white;
+  color: #6a0dad;
+  border: 1.5px solid #faf2ff;
+  border-radius: 10px;
+  font-weight: 500;
+  padding: 8px 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-purple:hover {
+  background-color: #f5eafb;
+  border-color: #f7ecff;
+  color: #4e0786;
+  text-decoration: none;
+}
+
+.btn-outline-purple.active,
+.btn-outline-purple:active,
+.btn-outline-purple[aria-current="page"] {
+  background-color: #e1bff7;
+  border-color: #f0eaf5;
+  color: #6a0dad;
+}
+
+/* --------------------------
+   Responsive Adjustments
+----------------------------- */
+@media (max-width: 768px) {
+  #indexNavbar::after {
+    left: 20px;
+    right: 20px;
+
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .nav-item {
+    margin: 5px 0;
+  }
+
+}
+
+/* --------------------------
+   Final Specificity Override
+----------------------------- */
+nav#indexNavbar.navbar.navbar-expand-lg.fixed-top.navbar-transparent {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+
+
+
+
+/* INDEX NAVBAR — Logout and Profile */
+#indexNavbar .profileBtn {
+  border-radius: 10px !important;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#indexNavbar .profileBtn i {
+  color: white;
+}
+
+#indexNavbar .profileBtn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* INDEX NAVBAR — Tooltip */
+#indexNavbar .tooltip-box {
+  position: fixed; /* Fixed to viewport, not relative to parent */
+  top: 70px; /* Adjust based on navbar height */
+  right: 20px; /* Distance from the right edge */
+  left: auto;
+  transform: none;
+
+  max-width: 90vw;
+  overflow-wrap: break-word;
+  white-space: nowrap;
+
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: none;
+  z-index: 9999;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.2s ease;
+}
+
+
+#indexNavbar .tooltip-box::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Mobile View  */
+@media (max-width: 768px) {
+  #indexNavbar .navbar-nav {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #indexNavbar .nav-item {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  #indexNavbar li.nav-item.position-relative {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative; /* Needed for tooltip positioning */
+  }
+
+  #indexNavbar .profileBtn {
+    margin: 0 auto;
+  }
+
+  #indexNavbar .tooltip-box {
+    position: absolute;
+    top: 120%; /* Directly below the icon */
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}

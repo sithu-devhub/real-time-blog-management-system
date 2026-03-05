@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  .container.mt-5(style="padding-top: 80px")
+    h1.text-center.mb-4 Admin Dashboard
+
+    .row.text-center.justify-content-center
+      .col-md-4.mb-4
+        a.tile-card(href="/admin/posts")
+          h4.mb-0 Manage Posts
+      .col-md-4.mb-4
+        a.tile-card(href="/admin/users")
+          h4.mb-0 Manage Users

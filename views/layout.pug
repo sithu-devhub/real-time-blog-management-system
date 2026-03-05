@@ -1,0 +1,122 @@
+doctype html
+html
+  head
+    title BlogMe 
+    link(rel="icon" href="/img/icon.jpg" type="image/png")
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    // Bootstrap and custom CSS
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css", rel="stylesheet")
+
+    
+    //- blog post card icon buttons
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css") 
+
+
+    //- link(rel="stylesheet", href="/css/style.css")
+    link(rel="stylesheet", href="/css/base.css")
+    link(rel="stylesheet", href="/css/navbar-index.css")
+    link(rel="stylesheet", href="/css/navbar-default.css")
+    link(rel="stylesheet", href="/css/index-carousel.css")
+    link(rel="stylesheet", href="/css/search-bar.css")
+    link(rel="stylesheet", href="/css/buttons.css")
+    link(rel="stylesheet", href="/css/cards.css")
+    link(rel="stylesheet", href="/css/post.css")
+    link(rel="stylesheet", href="/css/index-sections.css")
+    link(rel="stylesheet", href="/css/admin.css")
+    link(rel="stylesheet", href="/css/footer.css")
+
+  body(class=(isIndex ? 'index-page' : ''))
+    // Navbar
+    if typeof isIndex !== 'undefined' && isIndex
+      include components/navbar_index
+    include components/navbar_default
+
+    main
+      // Main content placeholder
+      block content
+
+    // Footer
+    include components/footer
+
+    // Bootstrap JS Bundle
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js")
+    
+    // Custom JS scripts
+    script(src="/js/flash-alert-autohide.js")
+    script(src="/js/custom-flash.js")
+    script(src="/js/delete-modal.js")
+    script(src="/js/login-logout-flash.js")
+    script(src="/js/navbar-scroll.js")
+    script(src="/js/index-icons.js")
+    script(src="/js/profile-icon.js")
+    script(src="/js/close-button.js")
+    script(src="/js/tags.js")
+    script(src="/js/autogrow-char-counter.js") 
+
+    // Tags Handling
+    script.
+      document.addEventListener('DOMContentLoaded', function () {
+        let tags = !{JSON.stringify(tagListArray || [])};
+        const input = document.getElementById('tagsInput');
+        const hiddenInput = document.getElementById('tagsHidden');
+        const tagContainer = document.getElementById('tag-container');
+
+        function renderTags() {
+          tagContainer.innerHTML = '';
+          tags.forEach(tag => {
+            const span = document.createElement('span');
+            span.className = 'badge bg-purple text-white me-2 mb-2 tag-badge';
+            span.textContent = tag;
+
+            const icon = document.createElement('i');
+            icon.className = 'bi bi-x ms-2 text-white cursor-pointer';
+            icon.dataset.tag = tag;
+            icon.addEventListener('click', () => removeTagByText(tag));
+
+            span.appendChild(icon);
+            tagContainer.appendChild(span);
+          });
+
+          tagContainer.appendChild(input);
+          hiddenInput.value = tags.join(',');
+          setTimeout(() => input.focus(), 0);
+        }
+
+        function removeTagByText(tagText) {
+          tags = tags.filter(t => t !== tagText);
+          renderTags();
+        }
+
+        input.addEventListener('keydown', function (e) {
+          const value = this.value.trim();
+          if ((e.key === ' ' || e.key === 'Enter') && value !== '') {
+            e.preventDefault();
+            if (value.length > 200) {
+              showCustomAlert('Each tag must be 200 characters or less.');
+              this.value = '';
+              return;
+            }
+            const currentTotalLength = tags.join(' ').length;
+            if (currentTotalLength + value.length > 2000) {
+              showCustomAlert('Total tags must not exceed 2000 characters.');
+              this.value = '';
+              return;
+            }
+            if (!tags.includes(value)) {
+              tags.push(value);
+              renderTags();
+            }
+            this.value = '';
+          }
+        });
+
+        renderTags();
+        input.focus();
+      });
+
+
+
+

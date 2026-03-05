@@ -1,0 +1,54 @@
+nav.navbar.navbar-expand-lg.fixed-top.navbar-transparent#indexNavbar
+  .container-fluid.px-5
+    a.navbar-brand(href=(user && user.isAdmin ? '/admin' : '/'))
+      img(src="/img/logo.jpg", alt="BlogMe", height="50", class="ps-2")
+
+    button.navbar-toggler(
+      type="button",
+      data-bs-toggle="collapse",
+      data-bs-target="#navbarNav",
+      aria-controls="navbarNav",
+      aria-expanded="false",
+      aria-label="Toggle navigation"
+    )
+      span.navbar-toggler-icon
+
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav.ms-auto
+
+        // GUEST
+        if !user
+          li.nav-item.mx-3
+            a.nav-link.nav-link-custom(class=(currentPage == 'posts' ? 'active' : ''), href="/posts") Blog Posts
+          li.nav-item.mx-3
+            a.nav-link.nav-link-custom(class=(currentPage == 'login' ? 'active' : ''), href="/login") Login
+          li.nav-item.mx-3
+            a.nav-link.nav-link-custom(class=(currentPage == 'register' ? 'active' : ''), href="/register") Register
+
+        // LOGGED-IN USERS
+        if user
+          if user.isAdmin
+            // Admin
+            li.nav-item.mx-3
+              a.nav-link.nav-link-custom(class=(currentPage == 'admin_posts_page' ? 'active' : ''), href="/admin/posts") Posts
+            li.nav-item.mx-3
+              a.nav-link.nav-link-custom(class=(currentPage == 'admin_users_page' ? 'active' : ''), href="/admin/users") Users
+            li.nav-item.mx-3
+              a.nav-link.nav-link-custom(href="/logout") Logout (#{user.name})
+          else
+            // Regular User
+            li.nav-item.mx-3
+              a.nav-link.nav-link-custom(class=(currentPage == 'posts' ? 'active' : ''), href="/posts") Blog Posts
+            li.nav-item.mx-3
+              a.nav-link.nav-link-custom(class=(currentPage == 'myposts' ? 'active' : ''), href="/posts/myposts") My Posts
+            li.nav-item.mx-3
+              a.nav-link.nav-link-custom(href="/logout") Logout
+            // Profile icon + tooltip
+            //- li.nav-item.mx-1.position-relative.index-navbar
+            //-   button#profileBtn.btn.btn-outline-purple-index(type="button", aria-label="User Profile")
+            //-     i.bi.bi-person-fill
+            //-   div#profileTooltip.tooltip-box-index #{user.name}
+            li.nav-item.position-relative
+              button.profileBtn.btn.btn-outline-purple(type="button", aria-label="User Profile")
+                i.bi.bi-person-fill
+              div.profileTooltip.tooltip-box= user && user.name ? user.name : 'Profile'

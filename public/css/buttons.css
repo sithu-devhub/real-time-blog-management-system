@@ -1,0 +1,87 @@
+/* my_posts.pug - create new post button */
+.create-post-btn {
+    background-color: #5018a9;       
+    border: 2px solid #ffffff;
+    color: white;
+    border-radius: 10px;              /* rounded corners */
+    font-weight: 500;
+    transition: all 0.2s ease;
+    padding: 0.6rem 1.2rem;
+  }
+
+.create-post-btn:hover {
+background-color: rgb(134, 67, 221);
+border-color: #ffffff;
+color: white;
+box-shadow: 0 4px 12px rgba(185, 146, 243, 0.3);
+}
+
+.adjust-btn-position {
+    transition: margin 0.3s ease;
+  }
+  
+
+@media (min-width: 768px) {
+    .adjust-btn-position {
+      margin-top: 6px; 
+    }
+  }
+  
+
+
+/* Register page AND Login Page */
+.register-btn,
+.login-btn {
+  background-color: #732d91; 
+  color: white;
+  font-weight: 500;
+  border: none;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.register-btn:hover,
+.login-btn:hover {
+  background-color: #dcc4f0;
+  box-shadow: 0 4px 12px rgba(166, 120, 226, 0.3);
+}
+
+.login-link {
+  color: #af00fa; 
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: #732d91; 
+  text-decoration: underline;
+}
+
+
+.register-link {
+  color: #af00fa; 
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.register-link:hover {
+  color: #732d91;
+  text-decoration: underline;
+}
+
+
+/* 404/500 Error pages */
+.btn-purple {
+  background-color: #732d91;
+  border-color: #732d91;
+  color: #fff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-purple:hover {
+  background-color: #5e2480; 
+  border-color: #5e2480;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(115, 45, 145, 0.3);
+}
+
+

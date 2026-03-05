@@ -1,0 +1,68 @@
+
+### Blog Management System ###
+A simple, elegant, and modern Blog Posting Platform built with Node.js, Express.js, MongoDB, and Pug.
+It allows users to create, edit, search, and manage blog posts with authentication and admin control features.
+
+
+# Functions
+User registration and login
+- Register and login as blog posting users
+- View blog posts posted by other users
+- Create, view, edit, delete your own blog posts
+- Search blog posts by title or tags
+- Admin panel to manage blog posts and users
+
+# Features
+- Responsive design for mobile, tablet, and desktop
+- Modern UI with Bootstrap 5 styling
+- Flash messages for user feedback
+- Secure authentication and CSRF protection
+- Reusable components
+- Clean and maintainable code structure
+
+# Technology stack
+- Backend: Node.js, Express.js
+- Database: MongoDB with Mongoose
+- Templating Engine: Pug
+- Styling: Bootstrap 5, Custom CSS
+- Authentication: Passport.js (Local Strategy)
+- Validation: Joi
+- Security: CSRF Protection
+- Other: Method-Override (for PUT and DELETE)
+
+
+# Author
+Name - Jayasinghege Don Madhusha Sithumini Jayasinghe
+Student ID - 22466972
+
+Command to run;
+npm start
+
+Main link;
+http://localhost:3000/
+
+404 test
+http://localhost:3000/test
+
+500 test
+http://localhost:3000/error-test
+
+Test User Logins
+Normal User
+Email - testuser@gmail.com
+Password - 111111
+
+Email - sithuminiadl@gmail.com 
+Password - 111111
+
+Admin User
+Email - adminuser@gmail.com
+Password - 111111
+
+Mobile Device Access;
+Home - http://192.168.0.120:3000
+University - 
+
+
+Postman Colleciton
+https://sithu-4044546.postman.co/workspace/9b18f05d-6b29-4d6f-834d-b18aca4e2194/documentation/44466631-3e1b06b1-ceff-4bdc-9551-2044954e6348 

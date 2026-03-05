@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  .container.mt-5(style="padding-top: 80px")
+    h1.text-center.mb-4 Admin Panel - Users
+
+    .table-responsive
+      table.table.table-hover.table-bordered
+        thead.table-light
+          tr
+            th Name
+            th Email
+            th Is Admin?
+        tbody
+          each user in users
+            tr
+              td= user.name
+              td= user.email
+              td= user.isAdmin ? 'Yes' : 'No'
+

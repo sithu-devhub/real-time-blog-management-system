@@ -1,0 +1,24 @@
+.footer-dark {
+  background-color: #290366;
+  color: #ddd;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-size: 0.6rem;
+  line-height: 0.5; /* Footer overall small */
+}
+
+.footer-dark p {
+  margin: 0;
+  line-height: 0.6; /* Lines inside p are spaced well */
+}
+
+.footer-dark a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 3px;
+  transition: color 0.3s ease;
+}
+
+.footer-dark a:hover {
+  color: #fff;
+}

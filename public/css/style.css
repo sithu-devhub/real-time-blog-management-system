@@ -1,0 +1,255 @@
+/* Global Reset for spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+/* body {
+  background-color: #f9f9f9;
+} */
+
+
+/* NAVBAR SWITCHING */
+ /* --------------------------
+   Transparent Navbar (Index)
+----------------------------- */
+.navbar-transparent {
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Transparent navbar links */
+.navbar-transparent .nav-link-custom {
+  color: white !important;
+  font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-size: 20px;
+  text-transform: none;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-transparent .nav-link-custom:hover {
+  color: #f0f0f0;
+}
+
+/* --------------------------
+   Scrolled / Solid Navbar
+----------------------------- */
+.navbar-scrolled {
+  background-color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Solid/scrolled navbar link styles */
+.navbar-scrolled .nav-link-custom,
+.bg-white .nav-link-custom {
+  color: #333 !important;
+}
+
+/* --------------------------
+   Active Link Highlighting
+----------------------------- */
+.nav-link-custom.active {
+  text-decoration: underline;
+}
+
+/* --------------------------
+   Responsive Navbar Toggler (Optional)
+----------------------------- */
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* #indexNavbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+} */
+#indexNavbar {
+  background-color: transparent !important;
+  backdrop-filter: none; /* if you're not blurring */
+  box-shadow: none !important;
+}
+
+#indexNavbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 60px;
+  right: 60px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  z-index: -1; /* keeps it behind nav content */
+}
+/* ------------------------------------------------- */
+
+
+
+
+/* Inxed page - Hero section */
+.hero-text h1 {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+/* Blog post cards */
+.card {
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+
+
+/* --------------------------
+    Navigation Buttons
+----------------------------- */
+.btn-primary {
+  background-color: #3c64f4;
+  border-color: #3c64f4;
+}
+
+.btn-outline-purple {
+  background-color: white;
+  color: #6a0dad;
+  border: 1.5px solid #faf2ff;
+  border-radius: 10px;
+  font-weight: 500;
+  padding: 8px 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-purple:hover {
+  background-color: #f5eafb;
+  border-color: #f7ecff;
+  color: #4e0786;
+  text-decoration: none;
+}
+
+.btn-outline-purple.active,
+.btn-outline-purple:active,
+.btn-outline-purple[aria-current="page"] {
+  background-color: #e1bff7;
+  /* border-color: #ae82cd; */
+  border-color: #f0eaf5;
+  color: #6a0dad;
+}
+
+
+
+/* ============================
+   Index Page - Alternating Sections
+============================ */
+
+/* Section container */
+.alt-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  height: 100vh;
+  gap: 40px;
+}
+
+/* Section text */
+.alt-text {
+  flex: 1;
+  padding: 40px;
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+/* Section image container */
+.alt-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Section images */
+.alt-image img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================
+   Section Backgrounds & Colors
+============================ */
+
+/* Section 1  */
+.bg-section-1 {
+  background-color: #f8f3fd;
+  color: #1e1e1e;
+}
+.bg-section-1 h2 { color: #4b1c96; }
+.bg-section-1 p  { color: #6c6a6f; }
+
+/* Section 2  */
+.bg-section-2 {
+  background-color: #ffffff;
+  color: #1e1e1e;
+}
+.bg-section-2 h2 { color: #1e397d; }
+.bg-section-2 p  { color: #6c6a6f; }
+
+/* Section 3  */
+.bg-section-3 {
+  background-color: #f8f3fd;
+  color: #1e1e1e;
+}
+.bg-section-3 h2 { color: #4b1c96; }
+.bg-section-3 p  { color: #6c6a6f; }
+
+/* ============================
+   Responsive Adjustments
+============================ */
+
+@media (max-width: 768px) {
+  .alt-section,
+  .alt-section:nth-child(even) {
+    flex-direction: column !important;
+    height: auto;
+    padding: 40px 20px 60px; /* add more bottom padding */
+    text-align: center;
+    gap: 20px;
+  }
+
+  .alt-text, .alt-image {
+    width: 100%;
+  }
+
+  .alt-text {
+    padding: 0;
+  }
+
+  .alt-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .alt-image img {
+    width: 80%;
+    height: auto;
+    margin: 10px auto 0 auto;
+    display: block;
+  }
+}
+
+

@@ -1,0 +1,112 @@
+/* --------------------------
+   Blog Card Grid Layout
+----------------------------- */
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.25rem;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-text {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.card-footer {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  color: #999;
+  background: transparent;
+  border-top: none;
+}
+
+
+/* --------------------------
+   Card Icon Buttons
+----------------------------- */
+
+.icon-action i {
+  font-size: 1.4rem;
+  transition: transform 0.2s ease;
+}
+
+.view-button,
+.edit-button,
+.delete-button {
+  padding: 1px 1px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 1.5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 0 0.8px currentColor;
+  border-color: currentColor !important;
+}
+
+.view-button {
+  color: #5e34db !important;
+  border: 1.5px solid #ffffff !important;
+}
+
+.edit-button {
+  color: #f39c12 !important;
+  border: 1.5px solid #ffffff !important;
+}
+
+.delete-button {
+  color: #e74c3c !important;
+  border: 1.5px solid #ffffff !important;
+}
+
+
+/* Hover effects */
+/* Smooth hover effect -  lightly scales the entire button */
+.view-button:hover,
+.edit-button:hover,
+.delete-button:hover {
+  background-color: transparent !important;
+  transform: scale(1.1);
+
+}
+
+/* Icon hover zoom - enlarges the icon slightly */
+.view-button:hover i,
+.edit-button:hover i,
+.delete-button:hover i {
+  background-color: transparent !important;
+  transform: scale(1.2);
+}

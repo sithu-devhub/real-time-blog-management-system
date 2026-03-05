@@ -1,0 +1,101 @@
+
+/* DEFAULT NAVBAR — Logout and Profile */
+#defaultNavbar .profileBtn {
+  border-radius: 10px !important;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
+  border: 1.5px solid #faf2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#defaultNavbar .profileBtn i {
+  color: #6a0dad;
+}
+
+#defaultNavbar .profileBtn:hover {
+  background-color: #f5eafb;
+  border-color: #f7ecff;
+}
+
+/* DEFAULT NAVBAR — Tooltip */
+#defaultNavbar .tooltip-box {
+  position: absolute;
+  top: 120%;
+  left: auto;
+  right: 0;
+  transform: none;
+  max-width: 90vw;
+  overflow-wrap: break-word;
+  background-color: #f5eafb;
+  color: #6a0dad;
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: 1px solid #e6d6f5;
+  white-space: nowrap;
+  display: none;
+  z-index: 9999;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(106, 13, 173, 0.08);
+  transition: opacity 0.2s ease;
+}
+
+
+#defaultNavbar .tooltip-box::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #f5eafb transparent;
+}
+
+/* Mobile View  */
+@media (max-width: 768px) {
+  #defaultNavbar .navbar-nav {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #defaultNavbar .nav-item {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  #defaultNavbar li.nav-item.position-relative {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #defaultNavbar .profileBtn {
+    margin: 0 auto;
+  }
+    #indexNavbar .tooltip-box {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+  #defaultNavbar .nav-item.position-relative {
+    position: relative; /* Needed for tooltip positioning */
+  }
+
+  #defaultNavbar .tooltip-box {
+    position: absolute;
+    top: 120%; /* Directly below the icon */
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}

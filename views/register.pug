@@ -1,0 +1,63 @@
+extends layout
+
+block content
+  .container.d-flex.flex-column.justify-content-center.align-items-center(style="flex: 1; padding-top: 150px; padding-bottom: 90px;")
+    .row.justify-content-center
+      .col-lg-20(style="min-width: 1000px")
+        .card.shadow-lg.border-0.rounded-4.overflow-hidden
+          .row.g-0.align-items-center(style="min-height: 500px;")
+
+            // Left Illustration Panel (Desktop only)
+            .col-md-6.d-none.d-md-flex.align-items-center.justify-content-center.bg-light
+              img(src="/img/register.jpg", alt="Register Illustration", class="img-fluid p-4", style="max-height: 380px;")
+
+            // Register Form Panel
+            .col-12.col-md-6.p-5
+
+              h2.mb-4.text-center.fw-bold.text-dark Register
+
+              // Flash messages block
+              if success_msg && success_msg.length
+                .alert.alert-success.alert-dismissible.fade.show(role='alert')
+                  = success_msg
+                  button.btn-close(type='button', data-bs-dismiss='alert')
+
+              if error_msg && error_msg.length
+                .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+                  = error_msg
+                  button.btn-close(type='button', data-bs-dismiss='alert')
+
+              if error && error.length
+                .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+                  = error
+                  button.btn-close(type='button', data-bs-dismiss='alert')
+
+              // Register form
+              form(action="/register" method="POST")
+                // CSRF protection token to prevent cross-site request forgery
+                input(type="hidden", name="_csrf", value=csrfToken)
+                .mb-3
+                  label.form-label(for="name") Name
+                  //- input.form-control(type="text", name="name", required)
+                  //- skip above in-field validation to use Joi validations 
+                  input.form-control.rounded-pill.py-2.px-3(type="text", name="name", value=name, placeholder="Enter your name", maxlength="100")
+
+                .mb-3
+                  label.form-label(for="email") Email
+                  //- input.form-control(type="email", name="email", required)
+                  //- skip above in-field validation to use Joi validations 
+                  input.form-control.rounded-pill.py-2.px-3(type="text", name="email", value=email, placeholder="Enter your email", maxlength="300")
+
+                .mb-3
+                  label.form-label(for="password") Password
+                  //- input.form-control(type="password", name="password", required)
+                  //- skip above in-field validation to use Joi validations 
+                  input.form-control.rounded-pill.py-2.px-3(type="password", name="password", placeholder="Create a password", maxlength="50")
+
+                button.btn.register-btn.w-100.rounded-pill.py-2.mt-2(type="submit") Register
+
+              .text-center.mt-4
+                p.mb-0 Already have an account?
+                  a(href="/login").login-link.text-decoration-none.ms-1 Log in
+
+

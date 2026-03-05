@@ -1,0 +1,91 @@
+extends layout
+
+block content
+  .container.mt-5.px-3.px-md-5(style="padding-top: 80px; max-width: 1500px")
+
+    // Flash alerts
+    if success_msg
+      .alert.alert-success.alert-dismissible.fade.show(role='alert')
+        = success_msg
+        button.btn-close(type='button', data-bs-dismiss='alert')
+
+    if error_msgs
+      each msg in error_msgs
+        .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+          = msg
+          button.btn-close(type='button', data-bs-dismiss='alert')
+
+    // Custom splash alert for client-side errors
+    #custom-alert
+
+    // Wrapped form inside styled card
+    .card.shadow-lg.border-0.rounded-4.p-4.p-md-5.bg-white
+      h2.text-center.mb-4.text-heading= headingTitle
+
+      // Close button
+      button.btn.btn-light.btn-sm.rounded-1.shadow.position-absolute.top-0.end-0.mt-2.me-3(
+        type="button",
+        aria-label="Close",
+        onclick="closeFormAndGoToMyposts()",
+        style="width: 36px; height: 36px; z-index: 1050;"
+      )
+        i.bi.bi-x.fs-5
+
+      form(action=action method="POST")
+        // CSRF protection token to prevent cross-site request forgery
+        input(type="hidden", name="_csrf", value=csrfToken)
+        
+        if method === 'PUT'
+          input(type="hidden", name="_method", value="PUT")
+        if method === 'PUT' && redirectTo
+          input(type="hidden", name="redirectTo", value=redirectTo)
+
+        .mb-4.position-relative
+          label.form-label(for="title") Title
+          textarea.form-control.shadow-sm(
+            name="title",
+            id="titleArea",
+            maxlength="2000", 
+            rows="1",
+            style="overflow:hidden; min-height:40px;",
+            oninput="autoGrow(this)"
+          )= formTitle || post.title || ''
+          span#titleCharCount.text-muted.position-absolute.pe-2(
+            style="bottom: 4px; right: 0; font-size: 0.8rem;"
+          ) 0 / 2000
+          //  maxlength="2000" >> Prevent typing beyond 2000
+
+
+        .mb-4.position-relative
+          label.form-label(for="content") Content
+          textarea.form-control.shadow-sm(
+            name="content",
+            id="contentArea",
+            maxlength="20000",
+            rows="6",
+            style="overflow:hidden; min-height:100px;",
+            oninput="autoGrow(this)"
+          )= formContent || post.content || ''
+          span#contentCharCount.text-muted.position-absolute.pe-2(
+            style="bottom: 4px; right: 0; font-size: 0.8rem;"
+          ) 0 / 20000
+
+
+        // TAGS INPUT with live preview
+        - const tagList = formTags || (post.tags && Array.isArray(post.tags) ? post.tags.join(' ') : '')
+        - const tagListArray = tagList.trim().length ? tagList.split(/\s+/) : []
+        .mb-4
+          label.form-label(for="tagsInput") Tags (type space to add)
+          #tag-container.d-flex.flex-wrap.align-items-start.border.rounded.p-2.bg-light(style="min-height: 45px")
+            each tag, i in tagListArray
+              - const tagColor = i % 3 === 0 ? 'bg-purple' : i % 3 === 1 ? 'bg-pink' : 'bg-indigo'
+              span.badge.text-white.me-2.mb-2(class=tagColor)= tag
+                i.bi.bi-x.ms-2.text-white.cursor-pointer(onclick='removeTagByText("#{tag}")')
+            input#tagsInput.border-0.flex-grow-1(type="text", placeholder="Type and press space", maxlength="2000")
+          input(type="hidden", name="tags", id="tagsHidden")
+
+        button.btn.mt-3.text-white.bg-purple.border-0(type="submit")
+          if method === 'PUT'
+            | Update
+          else
+            | Create

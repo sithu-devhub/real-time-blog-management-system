@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  .container.mt-5.px-3.px-md-5(style="padding-top: 80px; max-width: 1500px")
+
+    // Flash alerts
+    if success_msg
+      .alert.alert-success(role='alert')= success_msg
+    if error_msg
+      .alert.alert-danger(role='alert')= error_msg
+
+    - const authorName = post.createdBy && post.createdBy.name ? post.createdBy.name : 'Unknown'
+    - const createdDate = post.createdAt ? post.createdAt.toLocaleDateString() : 'Unknown date'
+
+    .card.shadow-lg.border-0.rounded-4.p-4.p-md-5.bg-white
+      h1.mb-3.text-center.text-heading.fw-semibold.fs-2.fs-md-1= post.title
+      
+      // Close button
+      button.btn.btn-light.btn-sm.rounded-1.shadow.position-absolute.top-0.end-0.mt-2.me-3(
+        type="button",
+        aria-label="Close",
+        onclick="closeFormAndGoToMyposts()",
+        style="width: 36px; height: 36px; z-index: 1050;"
+      )
+        i.bi.bi-x.fs-5
+
+      // Author info with icon and italics
+      .d-flex.flex-column.flex-sm-row.justify-content-center.align-items-center.text-muted.mb-3
+        i.bi.bi-info-circle.me-2.mb-2.mb-sm-0
+        span.fst-italic.text-center By #{authorName} on #{createdDate}
+
+      hr.my-4
+      .post-content.fs-6.fs-md-5
+        p= post.content
+
+      if post.tags && post.tags.length
+        .mt-4
+          strong.text-dark Tags:
+          .d-flex.flex-wrap.mt-2
+            each tag, i in post.tags
+              - const tagColor = i % 3 === 0 ? 'bg-purple' : i % 3 === 1 ? 'bg-pink' : 'bg-indigo'
+              span.badge.text-white.me-2.mb-2(class=tagColor)= tag

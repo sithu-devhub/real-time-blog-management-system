@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  .container.d-flex.justify-content-center.align-items-center(style="min-height: 80vh; padding-top: 80px;")
+    .text-center
+      img(src="/img/404.jpg", alt="Page Not Found", class="img-fluid mb-4 mx-auto d-block", style="width: 350px; height: auto;")
+      //- h1.display-4.text-dark.mb-3 404
+      h3.text-dark.mb-2 Page Not Found
+      p.text-muted.mb-4 We're sorry, the page you requested could not be found. Please go back to the homepage.
+      a.btn.btn-purple.rounded-pill.px-4.py-2(href="/") GO HOME
+

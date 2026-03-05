@@ -1,0 +1,11 @@
+form(method='GET', action=searchAction || '/posts', class='modern-search mb-5')
+  .input-group.rounded-pill.overflow-hidden.shadow
+    span.input-group-text.bg-white.border-0.ps-4
+      i.bi.bi-search
+    input.form-control.border-0.ps-2.py-2(
+      type='text',
+      name='search',
+      placeholder=placeholderText || 'Search posts...',
+      value=searchTerm
+    )
+    button.btn.search-btn.px-4.py-2(type='submit') Search

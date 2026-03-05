@@ -1,0 +1,86 @@
+extends layout
+
+block content
+  .container.mt-5(style="padding-top: 80px")
+    .content-wrapper.pb-5   
+      .d-flex.justify-content-between.align-items-center.mb-4
+        h2.mb-2.mb-md-3 Blog Posts
+
+      // Flash messages
+      if success_msg
+        .alert.alert-success(role='alert')= success_msg
+      if error_msg
+        .alert.alert-danger(role='alert')= error_msg
+
+      // Search bar form
+
+      //- // Set the variables for search
+      //- - var searchAction = '/posts'
+      //- - var placeholderText = 'Search blog posts...'
+      //- //- INCLUDE the search bar
+      //- include components/search_bar
+
+      form(method='GET', action=redirectTo || '/posts', class='modern-search mb-5')
+        .input-group.rounded-pill.overflow-hidden.shadow
+          span.input-group-text.bg-white.border-0.ps-4
+            i.bi.bi-search
+          input.form-control.border-0.ps-2.py-2(
+            type='text',
+            name='search',
+            placeholder='Search blog posts...',
+            value=searchTerm
+          )
+          button.btn.search-btn.px-4.py-2(type='submit') Search
+
+      // Display posts if available
+      if posts && posts.length
+        .row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-4
+          each post, index in posts
+            .col
+              .blog-card.h-100.shadow-sm
+                if post.image
+                  img.card-img-top(src=post.image, alt="")
+                else
+                  - const placeholderNumber = (index % 6) + 1
+                  img.card-img-top(src=`/img/cardplaceholder${placeholderNumber}.jpg`, alt='Placeholder image')
+
+                .card-body.d-flex.flex-column
+                  .title-wrapper.mb-2
+                    h5.card-title.mb-0= post.title.length > 100 ? post.title.substring(0, 100) + '...' : post.title
+
+                  .flex-grow-1
+                    p.card-text= post.content.length > 200 ? post.content.substring(0, 200) + '...' : post.content
+
+                .card-footer.text-muted
+                  - const authorName = (post.createdBy && post.createdBy.name) || (post.author && post.author.username) || 'Anonymous'
+                  - const createdAt = post.createdAt ? post.createdAt.toLocaleDateString() : 'Unknown date'
+
+                  .d-flex.justify-content-between.align-items-center
+                    span.small.text-muted
+                      | By #{authorName} on #{createdAt}
+
+                    .d-flex.align-items-center
+                      a.btn.btn-sm.btn-outline-secondary.ms-2.view-button(
+                        href=`/posts/${post._id}?from=posts`,
+                        title="View"
+                      )
+                        i.bi.bi-eye
+
+                      if user && post.createdBy && post.createdBy._id.toString() === user._id.toString()
+                        a.btn.btn-sm.btn-outline-primary.ms-2.edit-button(
+                          href=`/posts/${post._id}/edit?from=posts&redirectTo=/posts`,
+                          title="Edit"
+                        )
+                          i.bi.bi-pencil
+
+                        button.btn.btn-sm.btn-outline-danger.ms-2.delete-button(
+                          type='button',
+                          data-bs-toggle='modal',
+                          data-bs-target=`#deleteModal${post._id}`,
+                          title="Delete"
+                        )
+                          i.bi.bi-trash
+
+              include components/delete_modal
+      else
+        p.text-muted.text-center No posts found.

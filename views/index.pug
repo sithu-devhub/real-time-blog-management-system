@@ -1,0 +1,75 @@
+extends layout
+
+block content
+  // Flash messages block
+  div#toastContainer.position-fixed(style="top: 70px; right: 0; z-index: 9999;")
+    if success_msg && success_msg.length
+      .toast.fade.show.border-0(role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000")
+        .toast-body.position-relative(
+          style="background-color: #f3e8ff; color: #6f42c1; padding: 16px 36px 16px 16px; border-radius: 10px; box-shadow: 0 6px 12px rgba(111, 66, 193, 0.2); font-weight: 500;"
+        )
+          = success_msg
+          button.btn-close.btn-sm.position-absolute.top-50.translate-middle-y.end-0.me-2(
+            type='button',
+            data-bs-dismiss='toast',
+            aria-label='Close',
+            style="filter: brightness(70%); opacity: 0.7;"
+          )
+    if error_msg && error_msg.length
+      .toast.fade.show.border-0(role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000")
+        .toast-body.position-relative(
+          style="background-color: #f8d7da; color: #842029; padding: 16px 36px 16px 16px; border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); font-weight: 500;"
+        )
+          = error_msg
+          button.btn-close.btn-sm.position-absolute.top-50.translate-middle-y.end-0.me-2(
+            type='button',
+            data-bs-dismiss='toast',
+            aria-label='Close',
+            style="filter: brightness(70%); opacity: 0.7;"
+          )
+
+  // Hero Section
+  section
+    .hero-carousel.position-relative.text-white(style="height: 100vh; overflow: hidden; position: relative;")
+      img.hero-bg(src="/img/gradient.jpg" alt="Gradient BG")
+
+      .hero-carousel.position-relative
+        .blog-icons-overlay
+          each val in [1,2,3,4]
+            i.bi.bi-chat-left-text.blog-icon(style="top: 20%; left: 10%; animation-delay: 0s")
+            i.bi.bi-journal-text.blog-icon(style="top: 40%; left: 70%; animation-delay: 1s")
+            i.bi.bi-pencil.blog-icon(style="top: 60%; left: 30%; animation-delay: 2s")
+            i.bi.bi-book.blog-icon(style="top: 80%; left: 50%; animation-delay: 1.5s")
+            i.bi.bi-feather.blog-icon(style="top: 10%; left: 30%; animation-delay: 0.5s")
+            i.bi.bi-bookmark-star.blog-icon(style="top: 30%; left: 80%; animation-delay: 2.5s")
+            i.bi.bi-lightbulb.blog-icon(style="top: 70%; left: 15%; animation-delay: 3s")
+            i.bi.bi-stack.blog-icon(style="top: 50%; left: 85%; animation-delay: 3.5s")
+
+      .hero-overlay
+      .hero-text.text-center.px-3
+        h1.mb-3.fs-1.fs-md-1.fw-bold.text-gradient INK ON ME
+        p.lead.fs-6.fs-md-5 Unleash Your Soul
+        a.btn.btn-light.text-dark.fw-bold.mt-3(href="/posts") Get Started
+
+  // Alternating Sections (Responsive)
+  section
+    .alt-section.bg-section-1
+      .alt-text
+        h2.mb-3 Start sharing your thoughts
+        p Blogging lets you express your ideas, stories, or expertise to the world. Craft posts that reflect your voice and build your personal or professional brand.
+      .alt-image
+        img(src="/img/section1.jpg", alt="Writing a blog")
+    .alt-section.bg-section-2
+      .alt-text
+        h2.mb-3 Make it visual
+        p Add images, videos, or illustrations to bring your blog to life. Visual storytelling makes posts more engaging and memorable.
+      .alt-image
+        img(src="/img/section2.jpg", alt="Visual blog content")
+    .alt-section.bg-section-3
+      .alt-text
+        h2.mb-3 Connect with readers
+        p Share your posts, gather feedback, and grow a community. Whether it's a travel diary, recipe log, or tech guide — your blog can reach anyone.
+      .alt-image
+        img(src="/img/section3.jpg", alt="Reader engagement")
+
+

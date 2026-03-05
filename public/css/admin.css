@@ -1,0 +1,55 @@
+.tile-card {
+    display: block;
+    background: linear-gradient(135deg, rgb(188, 150, 238), #752ccf); /* deeper purples */
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .tile-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    background: linear-gradient(135deg, #512da8, #7b1fa2); /* darker hover gradient */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    border-color: #ab47bc;
+    color: #ffffff;
+  }
+  
+
+/* Fix Bootstrap Modal for iPhone 15 Pro Max Safari */
+.modal.show {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  pointer-events: none;
+  z-index: 1055 !important; /* ensure modal is above backdrop */
+}
+
+.modal-backdrop.show {
+  height: 100vh;
+  z-index: 1040 !important; /* ensure backdrop is under modal */
+}
+
+.modal-dialog {
+  margin: 0;
+  max-width: 95%;
+}
+
+.modal-content {
+  pointer-events: auto;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .modal.show {
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+  .modal-backdrop.show {
+    height: 100dvh;
+  }
+}

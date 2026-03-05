@@ -1,0 +1,30 @@
+
+.modal.fade(id=`deleteModal${post._id}`, tabindex='-1', aria-labelledby='deleteModalLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title#deleteModalLabel Confirm Deletion
+        button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+      //- .modal-body
+        //- p Are you sure you want to delete the post titled "#{post.title}"?
+      .modal-body
+        - const displayedTitle = post.title.length > 40 ? post.title.substring(0, 40) + '...' : post.title
+        p Are you sure you want to delete the post titled "#{displayedTitle}"?
+      .modal-footer
+        button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Cancel
+        //- form(action=`/posts/${post._id}?_method=DELETE`, method='POST')
+        //-   // CSRF protection token to prevent cross-site request forgery
+        //-   input(type="hidden", name="_csrf", value=csrfToken)
+        //-   // Hidden input to pass redirect URL (back to /posts page)
+        //-   input(type='hidden', name='redirectTo', class='redirect-input')
+        //-   button.btn.btn-danger(type='submit') Yes, Delete
+        if user && user.isAdmin
+          form(action=`/admin/posts/${post._id}?_method=DELETE`, method='POST')
+            input(type="hidden", name="_csrf", value=csrfToken)
+            input(type="hidden", name="redirectTo", value="/admin/posts")
+            button.btn.btn-danger(type='submit') Yes, Delete
+        else
+          form(action=`/posts/${post._id}?_method=DELETE`, method='POST')
+            input(type="hidden", name="_csrf", value=csrfToken)
+            input(type="hidden", name="redirectTo", class="redirect-input")
+            button.btn.btn-danger(type='submit') Yes, Delete

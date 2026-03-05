@@ -1,0 +1,93 @@
+extends layout
+//- include components/navbar
+
+block content
+  .container.mt-5(style="padding-top: 80px")
+    .content-wrapper.pb-5
+      // Responsive heading + button layout
+      .row.align-items-center.mb-1
+        .col-12.col-md-6.mb-md-5
+          h2.mb-5 My Blog Posts
+        // mb-4 = add 4 bottom margin on mobile   mb-md-0 = add 0 bottom margin on desktop    
+        .col-12.col-md-6.mb-4.mb-md-0 
+          .d-flex.justify-content-center.justify-content-md-end
+            a.btn.create-post-btn.px-4.py-2(href="/posts/new") + Create New Post
+
+      // Flash messages
+      if success_msg
+        .alert.alert-success(role='alert')= success_msg
+      if error_msg
+        .alert.alert-danger(role='alert')= error_msg
+
+      // search bar
+      //- // Set the variables
+      //- - var searchAction = '/myposts'
+      //- - var placeholderText = 'Search your posts...'
+      //- //- INCLUDE the search bar
+      //- include components/search_bar
+
+      form(method='GET', action=redirectTo || '/posts', class='modern-search mb-5')
+        .input-group.rounded-pill.overflow-hidden.shadow
+          span.input-group-text.bg-white.border-0.ps-4
+            i.bi.bi-search
+          input.form-control.border-0.ps-2.py-2(
+            type='text',
+            name='search',
+            placeholder='Search blog posts...',
+            value=searchTerm
+          )
+          button.btn.search-btn.px-4.py-2(type='submit') Search
+
+      // If posts exist
+      if posts.length
+        .row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-4
+          each post, index in posts
+            .col
+              .blogcard.h-100.shadow-sm
+                // Image Placeholder (future support)
+                if post.image
+                  img.card-img-top(src=post.image, alt="")
+                else
+                  // Alternate placeholders using index
+                  - const placeholderNumber = (index % 6) + 1
+                  img.card-img-top(src=`/img/cardplaceholder${placeholderNumber}.jpg`, alt='Placeholder image')
+
+                .card-body.d-flex.flex-column
+                  .title-wrapper.mb-2
+                    h5.card-title.mb-0= post.title.length > 100 ? post.title.substring(0, 100) + '...' : post.title
+
+                  .flex-grow-1
+                    p.card-text= post.content.length > 200 ? post.content.substring(0, 200) + '...' : post.content
+
+                .card-footer.text-end
+                  // View icon button
+                  a.btn.btn-sm.btn-outline-secondary.mt-2.me-2.view-button(
+                    href=`/posts/${post._id}?from=myposts`,
+                    title="View"
+                  )
+                    i.bi.bi-eye
+
+                  // Edit icon button
+                  a.btn.btn-sm.btn-outline-primary.mt-2.me-2.edit-button(
+                    href=`/posts/${post._id}/edit?from=myposts`,
+                    title="Edit"
+                  )
+                    i.bi.bi-pencil
+
+                  // Delete icon button
+                  button.btn.btn-sm.btn-outline-danger.mt-2.delete-button(
+                    type='button',
+                    data-bs-toggle='modal',
+                    data-bs-target=`#deleteModal${post._id}`,
+                    title="Delete"
+                  )
+                    i.bi.bi-trash
+
+              // Include Delete Confirmation Modal for each post (includes redirectTo input to return to the correct page)
+              include components/delete_modal
+
+      else
+        if searchTerm
+          p.text-muted.text-center.mt-0.mb-0 No posts found.
+        else
+          p.text-muted.text-center.mt-0.mb-0 You haven't written any blog posts yet.
